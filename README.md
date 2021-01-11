@@ -1,1 +1,1 @@
-# learning-typescript
+#My project to learn typescript
