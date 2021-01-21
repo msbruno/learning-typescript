@@ -1,3 +1,4 @@
+import { SignUpController} from './signup'
 
 describe("SignUp Controller", ()=> {
 
@@ -12,5 +13,6 @@ describe("SignUp Controller", ()=> {
             }
         }
         const httpResponse = sut.handle(httpRequest)
+        expect(httpResponse.statusCode).toBe(400)
     })
 })
