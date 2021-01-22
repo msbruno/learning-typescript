@@ -63,7 +63,8 @@ describe("SignUp Controller", ()=> {
 
         //sut = system under test.
         const {sut, emailValidatorStub} = makeSut()
-        jest.spyOn(emailValidatorStub, 'isValid').mockReturnValueOnce(false)
+        const isValidSpy = jest.spyOn(emailValidatorStub, 'isValid')
+        isValidSpy.mockReturnValueOnce(false)
 
         const httpRequest = {
             body : {
@@ -75,5 +76,6 @@ describe("SignUp Controller", ()=> {
         const httpResponse : HttpResponse = sut.handle(httpRequest)
         expect(httpResponse.statusCode).toBe(400)
         expect(httpResponse.body).toEqual(new InvalidParamError('email'))
+        expect(isValidSpy).toHaveBeenCalledWith('email..')
     })
 })
