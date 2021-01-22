@@ -2,7 +2,7 @@ import { MissingParamError } from '../errors/missing-param-error'
 import {HttpResponse, HttpRequest} from '../protocols/http'
 import {badRequest} from '../helpers/http-helpers'
 
-export class SignUpController {
+export class SignUpController implements Controller {
     handle(httpRequest: HttpRequest): HttpResponse {
 
         for (const field of this.requiredFields()) {
