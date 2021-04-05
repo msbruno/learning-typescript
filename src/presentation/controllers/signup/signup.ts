@@ -29,7 +29,7 @@ export class SignUpController implements Controller {
                 email: httpRequest.body.email,
                 password: httpRequest.body.password
             })
-
+            
             return ok(account)
 
         } catch(err) {

@@ -10,7 +10,7 @@ jest.mock('bcrypt', () => ({
 
 
 const makeSut = (): Encrypter => {
-    const sut = new BcryptAdapter()
+    const sut = new BcryptAdapter(12)
     return sut
 }
 

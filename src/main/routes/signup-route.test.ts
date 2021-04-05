@@ -8,9 +8,9 @@ describe('SignUp routes', () => {
             request(app)
             .post('/api/signup')
             .send({
-                name: 'valid_name',
-                email: 'valid_email@gmail.com',
-                password: '12345'
+                name: 'aaavalid_name',
+                email: 'aavalid_email@gmail.com',
+                password: '11112345'
             })
             .expect(200)
     })

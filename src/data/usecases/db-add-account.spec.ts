@@ -11,18 +11,22 @@ interface SubType {
 }
 const  makeAddAccountRepositoryStub = ():AddAccountRepository => {
     class AddAccountRepositoryStub implements AddAccountRepository {
-        add(account : AddAccountModel): Promise<AccountModel> {
-            const fakeAccount = {
-                id: 'valid_id',
-                name: 'valid_name',
-                email: 'valid_email@gmail.com',
-                password: 'hashed_password',
-            } 
-            return new Promise(resolve => resolve(fakeAccount))
+        async add(account : AddAccountModel): Promise<AccountModel> {
+            const fakeAccount = makeFakeAccount()
+            return fakeAccount
         }
     }
     return new AddAccountRepositoryStub()
 }
+
+const makeFakeAccount = (): AccountModel => {
+    return {
+        id: 'valid_id',
+        name: 'valid_name',
+        email: 'valid_email@gmail.com',
+        password: 'hashed_password',
+    } 
+} 
 
 const makeEncrypterStyb = () : Encrypter => {
     class EncrypterStub implements Encrypter { 
@@ -103,4 +107,19 @@ describe('', ()=>{
             password: 'hashed_password'
         })
     })
+
+    test('Should return an account on success.', async ()=> {
+
+        const {sut} = makeSut()
+        
+        const account = {
+            name:'valid name',
+            email:'valid_email@gmail.com',
+            password: 'valid_password'
+        }
+
+        const addedAccount = await sut.add(account)
+        expect(addedAccount).toEqual(makeFakeAccount())
+    })
+    
 })
