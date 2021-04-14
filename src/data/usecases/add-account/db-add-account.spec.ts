@@ -1,6 +1,6 @@
-import { AccountModel } from "../../domain/model/account-model"
-import { AddAccountModel } from "../../domain/use-cases/add-account"
-import { Encrypter } from "../protocols/encrypter"
+import { AccountModel } from "../../../domain/model/account-model"
+import { AddAccountModel } from "../../../domain/use-cases/add-account"
+import { Encrypter } from "../../protocols/encrypter"
 import { AddAccountRepository } from "./add-account-repository"
 import { DbAddAccount } from "./db-add-account"
 
